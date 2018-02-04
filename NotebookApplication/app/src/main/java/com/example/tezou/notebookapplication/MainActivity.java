@@ -2,12 +2,10 @@ package com.example.tezou.notebookapplication;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Toast;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 //                処理
-                Intent intent = new Intent(MainActivity.this, RegisterWord.class);
+                Intent intent = new Intent(MainActivity.this, RegisterWordActivity.class);
                 // Activityの移動
                 startActivity(intent);
             }
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 //                処理
-                Intent intent = new Intent(MainActivity.this, RegisterWord.class);
+                Intent intent = new Intent(MainActivity.this, RegisterWordActivity.class);
                 // Activityの移動
                 startActivity(intent);
             }
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 //                処理
-                Intent intent = new Intent(MainActivity.this, RegisterWord.class);
+                Intent intent = new Intent(MainActivity.this, RegisterWordActivity.class);
                 // Activityの移動
                 startActivity(intent);
             }

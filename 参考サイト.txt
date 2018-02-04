@@ -1,0 +1,18 @@
+【Android】クリックイベントの基本的な実装
+https://qiita.com/HideMatsu/items/2e6caec8265bcf2a2dcb
+
+Android Studioのプロジェクトを移動したらアプリケーションインストールエラーが出た
+https://qiita.com/gojappe/items/e1c4ea170cedd677b6ff?
+
+Androidアプリのデータ保存方法の一つ「ローカルファイル」の使い方
+http://android.roof-balcony.com/shori/strage/localfile-2/
+
+PreferenceにObjectを保存すると設定画面の構築が捗る！?
+https://qiita.com/ueno-yuhei/items/3810576dc391c2513586
+
+オブジェクトの内容をファイルに保存、復元する
+オブジェクトのXMLシリアル化、逆シリアル化を行う
+https://dobon.net/vb/dotnet/file/xmlserializer.html
+
+Android -プリファレンス- <MitoRoid>
+http://mitoroid.com/category/android/android_preference.php
