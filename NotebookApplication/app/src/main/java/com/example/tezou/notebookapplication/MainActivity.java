@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 //                処理
-                Intent intent = new Intent(MainActivity.this, RegisterWordActivity.class);
+                Intent intent = new Intent(MainActivity.this, WordListActivity.class);
                 // Activityの移動
                 startActivity(intent);
             }
