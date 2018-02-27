@@ -8,13 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by tezou on 2018/02/18.
  */
 
-public class WordDBHelper extends SQLiteOpenHelper {
+public class WordDBOpenHelper extends SQLiteOpenHelper {
 
-    private final static String DB_NAME = "worddb";
+    private final static String DB_NAME = "WordDataBase";
     private final static int VERSION = 01;
 
     // コンストラクタ
-    public WordDBHelper(Context context) {
+    public WordDBOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 

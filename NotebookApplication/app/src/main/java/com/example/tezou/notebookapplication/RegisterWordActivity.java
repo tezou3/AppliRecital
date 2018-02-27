@@ -1,7 +1,6 @@
 package com.example.tezou.notebookapplication;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -12,9 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.view.View;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +43,7 @@ public class RegisterWordActivity extends AppCompatActivity{
         //tagView.setVisibility(tagView.VISIBLE);
 
         // データベース作成
-        WordDBHelper helper = new WordDBHelper(getApplicationContext());
+        WordDBOpenHelper helper = new WordDBOpenHelper(getApplicationContext());
         final SQLiteDatabase db = helper.getWritableDatabase();
 
         // スレッド・ハンドラ作成
