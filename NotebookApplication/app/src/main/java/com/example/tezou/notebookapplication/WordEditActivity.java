@@ -100,10 +100,12 @@ public class WordEditActivity extends AppCompatActivity {
                                 public void run() {
                                     ew.getEditableText().clear();
                                     ed.getEditableText().clear();
+                                    Toast.makeText(getApplicationContext(), "更新が完了しました",Toast.LENGTH_SHORT).show();
                                     finish();
 
                                     Intent intent = new Intent(getApplication(), WordListActivity.class);
                                     startActivity(intent);
+
                                 }
                             });
                         }

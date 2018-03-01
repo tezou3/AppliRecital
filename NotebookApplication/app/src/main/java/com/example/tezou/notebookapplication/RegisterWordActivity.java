@@ -97,6 +97,7 @@ public class RegisterWordActivity extends AppCompatActivity{
                                 // 保持してたタグを消去
                                 tagList.removeAll(tagList);
                             }
+                            Toast.makeText(getApplicationContext(), "登録が完了しました",Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -162,7 +163,7 @@ public class RegisterWordActivity extends AppCompatActivity{
                     });
                     EditText eee = (EditText)findViewById(R.id.tagName_text);
                     eee.getEditableText().clear();
-
+                    Toast.makeText(getApplicationContext(), "登録が完了しました",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -174,8 +175,6 @@ public class RegisterWordActivity extends AppCompatActivity{
                 tagView.setVisibility(tagView.INVISIBLE);
             }
         });
-
     }
     // onCreateここまで
-
 }

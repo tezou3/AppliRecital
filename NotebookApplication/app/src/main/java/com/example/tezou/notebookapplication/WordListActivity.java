@@ -138,13 +138,6 @@ public class WordListActivity extends AppCompatActivity implements SearchView.On
             @Override
             public void run() {
                 synchronized (lockObject) {
-                    // メインスレッドを一時停止
-//                mHandler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                    }
-//                });
 
                     Log.i("YUZO", "Thread getWordInfo run start.");
                     Cursor cursor = db.query(SC.TABLE_WORDLIST, new String[]{SC.KEY_DESCRIPTION},

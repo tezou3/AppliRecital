@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Notebook Application</string>
+    <string name="app_name">WordList Application</string>
     <string name="title">自分で作る単語帳</string>
     <string name="aaaaaaa">enter a message</string>
     <string name="submit_button">決定</string>
-    <string name="word">用語</string>
+    <string name="word">単語</string>
     <string name="description">説明</string>
-    <string name="word_hint">登録したい用語を入力してください</string>
-    <string name="description_hint">用語の説明を入力してください</string>
+    <string name="word_hint">登録したい単語を入力してください</string>
+    <string name="description_hint">単語の説明を入力してください</string>
     <string name="title_activity_word_list">WordListActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

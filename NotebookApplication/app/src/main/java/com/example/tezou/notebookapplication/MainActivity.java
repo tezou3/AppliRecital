@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "onBackPressed", Toast.LENGTH_SHORT).show();
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Toast.makeText(this, "onBackPressed", Toast.LENGTH_SHORT).show();
+//        super.onBackPressed();
+//    }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Toast.makeText(this, event.toString(), Toast.LENGTH_SHORT).show();
-        return super.onTouchEvent(event);
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        Toast.makeText(this, event.toString(), Toast.LENGTH_SHORT).show();
+//        return super.onTouchEvent(event);
+//    }
 
 
 //    @Override
