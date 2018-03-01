@@ -21,7 +21,9 @@
             android:name=".WordListActivity"
             android:label="@string/title_activity_word_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".WordInfoActivity" />
+        <activity android:name=".WordEditActivity"></activity>
     </application>
 
 </manifest>

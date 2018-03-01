@@ -20,20 +20,9 @@ import java.util.List;
  */
 
 public class RegisterWordActivity extends AppCompatActivity{
-
-    private final String TABLE_WORDLIST = "WordList";
-    private final String KEY_WORD = "wordName";
-    private final String KEY_DESCRIPTION = "description";
-    private final String TABLE_TAGLIST = "TagList";
-    private final String KEY_TAGNAME = "tagName";
-    private final String TABLE_LINKTAG = "WordLinkTag";
-    private final String KEY_TAG_WORDID = "WORD_ID";
-    private final String KEY_TAG_ID = "TAG_ID";
-
     private List<Long> tagList = new ArrayList<>();
 
     private final Object lockObject = new Object();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +42,8 @@ public class RegisterWordActivity extends AppCompatActivity{
         // HandlerThreadのLooperをHandlerに渡す
         final Handler handler = new Handler(handlerThread.getLooper());
 
-        final EditText ew = (EditText)findViewById(R.id.wordName);
-        final EditText ed = (EditText)findViewById(R.id.wordDesc);
+        final EditText ew = (EditText)findViewById(R.id.input_wordName);
+        final EditText ed = (EditText)findViewById(R.id.input_wordDesc);
         // TODO ここにタグも
 
         // 登録ボタンを押したときの処理
@@ -78,9 +67,9 @@ public class RegisterWordActivity extends AppCompatActivity{
                             Log.v("Regist ",Thread.currentThread().getName());
                             // 用語テーブルに追加
                             ContentValues values = new ContentValues();
-                            values.put(KEY_WORD,word);
-                            values.put(KEY_DESCRIPTION,desc);
-                            long id = db.insert(TABLE_WORDLIST,null,values);
+                            values.put(SC.KEY_WORD,word);
+                            values.put(SC.KEY_DESCRIPTION,desc);
+                            long id = db.insert(SC.TABLE_WORDLIST,null,values);
                             Log.v("wordRegister","wordID="+id+", "+"word="+word);
 
                             if (id < 0) {
@@ -94,11 +83,11 @@ public class RegisterWordActivity extends AppCompatActivity{
                             if (0 < tagList.size()) {
                                 for (int i = 0; i < tagList.size(); i++){
                                     ContentValues twValues = new ContentValues();
-                                    twValues.put(KEY_TAG_WORDID,id);
-                                    twValues.put(KEY_TAG_ID,tagList.get(i));
+                                    twValues.put(SC.KEY_TAG_WORDID,id);
+                                    twValues.put(SC.KEY_TAG_ID,tagList.get(i));
                                     Log.v("WordLinkTag","wordID="+id+" toLink "+"tagID="+tagList.get(i));
 
-                                    long id2 = db.insert(TABLE_LINKTAG,null,twValues);
+                                    long id2 = db.insert(SC.TABLE_LINKTAG,null,twValues);
                                     if (id2 < 0) {
                                         //TODO
                                         // -1が返却された時のエラー処理
@@ -111,8 +100,8 @@ public class RegisterWordActivity extends AppCompatActivity{
                         }
                     });
 
-                    EditText eew = (EditText)findViewById(R.id.wordName);
-                    EditText eed = (EditText)findViewById(R.id.wordDesc);
+                    EditText eew = (EditText)findViewById(R.id.input_wordName);
+                    EditText eed = (EditText)findViewById(R.id.input_wordDesc);
                     eew.getEditableText().clear();
                     eed.getEditableText().clear();
                 }
@@ -159,8 +148,8 @@ public class RegisterWordActivity extends AppCompatActivity{
                         public void run() {
 
                             ContentValues values = new ContentValues();
-                            values.put(KEY_TAGNAME, tagName);
-                            long id = db.insert(TABLE_TAGLIST, null, values);
+                            values.put(SC.KEY_TAGNAME, tagName);
+                            long id = db.insert(SC.TABLE_TAGLIST, null, values);
                             Log.v("tagRegister", "tag_id=" + id + ", " + "tagName=" + tagName);
                             if (id < 0) {
                                 //TODO

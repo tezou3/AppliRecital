@@ -6,22 +6,9 @@
     android:layout_height="match_parent"><![CDATA[
     tools:context="com.example.tezou.notebookapplication.RegisterWordActivity">
 
-    ]]>
 
-    <Button
-        android:id="@+id/regist_button"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:text="登録"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+    ]]>
 
     <TextView
         android:id="@+id/textView"
@@ -36,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/input_wordName"
+        android:id="@+id/reinput_wordName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -54,22 +41,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/description"
         android:textAppearance="?android:attr/textAppearanceMedium"
         app:layout_constraintEnd_toStartOf="@+id/input_wordDesc"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_wordName" />
+        app:layout_constraintTop_toBottomOf="@+id/reinput_wordName" />
 
     <EditText
-        android:id="@+id/input_wordDesc"
+        android:id="@+id/reinput_wordDesc"
         android:layout_width="0dp"
         android:layout_height="116dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:gravity="start"
         android:hint="@string/description_hint"
@@ -78,6 +65,7 @@
         android:singleLine="false"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -85,12 +73,12 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="タグ"
         android:textAppearance="?android:attr/textAppearanceMedium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_wordDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/reinput_wordDesc" />
 
     <Button
         android:id="@+id/tagregist_button"
@@ -103,6 +91,21 @@
         app:layout_constraintBottom_toTopOf="@+id/regist_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/update_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:text="更新"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/tagLayout"
@@ -183,5 +186,7 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="158dp" />
     </android.support.constraint.ConstraintLayout>
+
+    tools:context="com.example.tezou.notebookapplication.WordEditActivity">
 
 </android.support.constraint.ConstraintLayout>
