@@ -23,11 +23,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".WordInfoActivity" />
-        <activity android:name=".WordEditActivity"></activity>
+        <activity android:name=".WordEditActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".TagLinkWordActivity"></activity>
     </application>
 
 </manifest>

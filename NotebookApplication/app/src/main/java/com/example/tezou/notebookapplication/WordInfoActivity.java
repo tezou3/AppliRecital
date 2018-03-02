@@ -94,12 +94,12 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        // タグの名前を取得する処理
+        // タグIDに紐づく単語のIDを取得する処理
         handler2.post(new Runnable() {
             @Override
             public void run() {
                 synchronized (lockObject) {
-                    Log.i("YUZO", "Thread getTagName run start.");
+                    Log.i("YUZO", "Thread get wordID run start.");
                     String tag_id_array[] = tagIDList.toArray(new String[tagIDList.size()]);
 
                     // 検索条件の数を調整
@@ -133,6 +133,27 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
                 }
             }
         });
+
+        handler2.post(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (lockObject) {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Intent intent = new Intent(getApplication(),TagLinkWordActivity.class);
+
+                            intent.putExtra(SC.TAG_INFO, wordIDList);
+                            wordIDList = new ArrayList<>();
+                            Log.i("YUZO", "tagList refresh done. tagList=" + wordIDList);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            }
+        });
+
+
     }
 
 }
