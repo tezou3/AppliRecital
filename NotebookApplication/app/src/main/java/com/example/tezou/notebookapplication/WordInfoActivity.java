@@ -15,7 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class WordInfoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
@@ -39,20 +38,22 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
         wordName.setText(base_info.get(1));
         wordDesc.setText(base_info.get(2));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(),R.layout.tag_rowdata,tag_info);
+        ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(),R.layout.rowdata_tag,tag_info);
         final ListView tagListView = (ListView) findViewById(R.id.show_tagName);
         tagListView.setAdapter(adapter);
 
-        findViewById(R.id.to_edit_button).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.button_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),WordEditActivity.class);
+                Intent intent = new Intent(getApplicationContext(),WordUpdateActivity.class);
                 intent.putExtra(SC.BASE_INFO, base_info);
                 startActivity(intent);
             }
         });
     }
 
+    // タグリストのアイテムをクリックしたときの処理
     @Override
     public void onItemClick(final AdapterView<?> adapterView, final View view, final int i, final long l) {
         WordDBOpenHelper helper = new WordDBOpenHelper(getApplicationContext());
@@ -64,25 +65,25 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
         final String tagItem = adapterView.getItemAtPosition(i).toString();
 
         // スレッド・ハンドラ作成
-        final HandlerThread handlerThread2 = new HandlerThread("other");
-        handlerThread2.start();
+        final HandlerThread handlerThread = new HandlerThread("other");
+        handlerThread.start();
 
         // HandlerThreadのLooperをHandlerに渡す
-        final Handler handler2 = new Handler(handlerThread2.getLooper());
+        final Handler handler = new Handler(handlerThread.getLooper());
 
-        // タグ名からタグIDを取得
-        handler2.post(new Runnable() {
+        // クリックしたタグからタグIDを取得
+        handler.post(new Runnable() {
             @Override
             public void run() {
                 synchronized (lockObject) {
-
-                    Log.i("YUZO", "Thread getTag run start.");
+                    Log.i("YUZO", "Thread getTagID run start.");
                     Cursor cursor = db.query(SC.TABLE_TAGLIST, new String[]{SC.KEY_TAG_ID},
                             SC.KEY_TAGNAME + " = ?", new String[]{tagItem}, null, null, null);
                     boolean mov = cursor.moveToFirst();
                     if (!mov) {
                         return;
                     }
+
                     int i = 0;
                     while (mov) {
                         tagIDList.add(i, cursor.getString(i));
@@ -94,12 +95,12 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        // タグの名前を取得する処理
-        handler2.post(new Runnable() {
+        // タグIDに紐づく単語IDを取得する処理
+        handler.post(new Runnable() {
             @Override
             public void run() {
                 synchronized (lockObject) {
-                    Log.i("YUZO", "Thread getTagName run start.");
+                    Log.i("YUZO", "Thread getWordID run start.");
                     String tag_id_array[] = tagIDList.toArray(new String[tagIDList.size()]);
 
                     // 検索条件の数を調整
@@ -110,6 +111,7 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
                             sb.append("OR ? ");
                         }
                     }
+
                     String selectionArgs = sb.toString();
                     Log.i("YUZO", "selectionArgs build done. selectionArgs:" + selectionArgs);
                     // tag_idの初期化
@@ -122,6 +124,7 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
                     if (!mov) {
                         return;
                     }
+
                     int i = 0;
                     while (mov) {
                         wordIDList.add(i, cursor.getString(0));
@@ -129,10 +132,56 @@ public class WordInfoActivity extends AppCompatActivity implements AdapterView.O
                         mov = cursor.moveToNext();
                         i++;
                     }
-                    Log.i("YUZO", "Thread getTagName run end.");
+
+                    Log.i("YUZO", "Thread getWordID run end.");
                 }
             }
         });
-    }
 
+        // 単語IDから単語を取得する処理
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (lockObject) {
+                    Log.i("YUZO", "Thread getWordName run start.");
+                    String word_id_array[] = wordIDList.toArray(new String[wordIDList.size()]);
+
+                    // 検索条件の数を調整
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(" = ? ");
+                    for (int i = 0; i < tagIDList.size(); i++) {
+                        if (i > 0) {
+                            sb.append("OR ? ");
+                        }
+                    }
+
+                    String selectionArgs = sb.toString();
+                    ArrayList wordNameList = new ArrayList();
+
+                    Cursor cursor = db.query(SC.TABLE_WORDLIST, new String[]{SC.KEY_WORD}, SC.KEY_ID + selectionArgs, word_id_array, null, null, null);
+                    boolean mov = cursor.moveToFirst();
+                    if (!mov) {
+                        return;
+                    }
+
+                    int i = 0;
+                    while (mov) {
+                        wordNameList.add(i, cursor.getString(0));
+                        Log.i("load", "index=" + i + ", " + cursor.getString(0));
+                        mov = cursor.moveToNext();
+                        i++;
+                    }
+
+                    // WordListActivityへデータを送る
+                    Intent intent = new Intent(getApplication(), WordListActivity.class);
+                    intent.putExtra("wordNameList", wordNameList);
+                    intent.putExtra("wordIDList", wordIDList);
+                    startActivity(intent);
+
+                    Log.i("YUZO", "Thread getWordName run end.");
+                }
+            }
+        });
+
+    }
 }

@@ -93,19 +93,19 @@
         app:layout_constraintTop_toBottomOf="@+id/input_wordDesc" />
 
     <Button
-        android:id="@+id/tagregist_button"
+        android:id="@+id/button_tag_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="タグ追加"
-        app:layout_constraintBottom_toTopOf="@+id/regist_button"
+        app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/tagLayout"
+        android:id="@+id/layout_tag"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -146,7 +146,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
-            android:id="@+id/tagregist_button2"
+            android:id="@+id/button_tag_register"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="登録"
-            app:layout_constraintBottom_toTopOf="@+id/tag_close_button"
+            app:layout_constraintBottom_toTopOf="@+id/button_tag_close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tagName_text" />
@@ -173,7 +173,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tagregist_button2" />
+            app:layout_constraintTop_toBottomOf="@+id/button_tag_register" />
 
         <ListView
             android:id="@+id/listView2"

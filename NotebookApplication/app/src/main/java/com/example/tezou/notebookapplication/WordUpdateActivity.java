@@ -10,17 +10,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class WordEditActivity extends AppCompatActivity {
+public class WordUpdateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_word_edit);
+        setContentView(R.layout.activity_word_update);
 
         // データベース作成
         WordDBOpenHelper helper = new WordDBOpenHelper(getApplicationContext());
@@ -47,7 +46,7 @@ public class WordEditActivity extends AppCompatActivity {
 
 
         // 登録ボタンを押したときの処理
-        findViewById(R.id.update_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_update).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String word = ew.getText().toString();

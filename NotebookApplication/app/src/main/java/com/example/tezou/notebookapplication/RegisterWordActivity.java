@@ -27,8 +27,8 @@ public class RegisterWordActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_word);
-        final View tagView = findViewById(R.id.tagLayout);
+        setContentView(R.layout.activity_register_word);
+        final View tagView = findViewById(R.id.layout_tag);
         //tagView.setVisibility(tagView.VISIBLE);
 
         // データベース作成
@@ -47,7 +47,7 @@ public class RegisterWordActivity extends AppCompatActivity{
         // TODO ここにタグも
 
         // 登録ボタンを押したときの処理
-        findViewById(R.id.regist_button).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.button_register).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 System.out.println(Thread.currentThread().getName());
@@ -106,28 +106,12 @@ public class RegisterWordActivity extends AppCompatActivity{
                     eew.getEditableText().clear();
                     eed.getEditableText().clear();
                 }
-//                WordInfo wi = new WordInfo();
-//                wi.wordName = word;
-//                wi.wordDesc = desc;
-//                // TODO IDをどうするか
-//                wi.wordId = 1;
-//                List<WordInfo> wordList = new ArrayList();
-//                wordList.add(wi);
-//
-//                ObjectOutputStream oos = null;
-//
-//                try {
-//                    oos = new ObjectOutputStream(new FileOutputStream("wordListTest.xml"));
-//                    oos.writeObject(wordList);
-//                } catch (IOException e) {
-//                } finally {
-//                    if (oos != null) { try { oos.close(); } catch (Exception ignore) { } }
-//                }
+
             }
         });
 
         // タグ追加ボタンの処理
-        findViewById(R.id.tagregist_button).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.button_tag_add).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 tagView.setVisibility(tagView.VISIBLE);
@@ -135,7 +119,7 @@ public class RegisterWordActivity extends AppCompatActivity{
         });
 
         // タグ登録ボタンの処理
-        findViewById(R.id.tagregist_button2).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.button_tag_register).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 final EditText et = (EditText)findViewById(R.id.tagName_text);
@@ -169,7 +153,7 @@ public class RegisterWordActivity extends AppCompatActivity{
         });
 
         // タグレイアウト閉じる
-        findViewById(R.id.tag_close_button).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.button_tag_close).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 tagView.setVisibility(tagView.INVISIBLE);

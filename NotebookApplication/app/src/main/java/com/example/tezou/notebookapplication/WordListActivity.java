@@ -71,7 +71,7 @@ public class WordListActivity extends AppCompatActivity implements SearchView.On
 
         synchronized (lockObject) {
             Log.i("YUZO", "otherTherad done.");
-            SimpleAdapter adapter = new SimpleAdapter(this, listData, R.layout.word_rowdata,
+            SimpleAdapter adapter = new SimpleAdapter(this, listData, R.layout.rowdata_word,
                     new String[]{SC.KEY_ID, "name"}, new int[]{R.id.adapter_id, R.id.adapter_wordName});
             mListView.setAdapter(adapter);
             mListView.setTextFilterEnabled(true);
